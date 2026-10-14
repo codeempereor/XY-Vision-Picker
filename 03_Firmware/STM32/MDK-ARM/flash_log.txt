@@ -1,3 +1,0 @@
-Load "F:\\Projects\\01_Embedded\\STM32\\XY_Vision_Picker\\03_Firmware\\STM32\\MDK-ARM\\CoreXY_Motion.axf" 
-Erase Done.Programming Done.Verify OK.Application running ...
-Flash Load finished at 23:17:42

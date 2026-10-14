@@ -77,3 +77,10 @@ ppt_work/
 06_Resources/PCAN/上位机软件/TSMaster.zip
 06_Resources/PCAN/驱动/win/PEAK-System_Driver-Setup.zip
 04_Tools/调试工具/PEAK-System_Driver-Setup-v500/
+*.mp4
+
+# ===== Keil 编译产物 =====
+*.lnp
+*.dep
+*.log
+*.uvguix.*
