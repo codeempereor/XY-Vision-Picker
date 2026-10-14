@@ -1,0 +1,45 @@
+
+(1) 内核配置驱动支持：
+
+     # make ARCH=arm64 menuconfig		(or   make ARCH=arm menuconfig)
+
+	[*] Networking support  --->
+		<*>   CAN bus subsystem support  ---> 
+			CAN Device Drivers  --->  
+				CAN USB interfaces  --->
+					 <*> PEAK PCAN-USB/USB Pro interfaces for CAN 2.0b/CAN-FD
+
+   内核配置驱动之后，板子接入嵌入式设备的USB口，会发现下面的信息，并有 can0 设备生成
+
+root@linaro-alip:~# [   71.387336] usb 2-1.1: new full-speed USB device number 5 using ehci-platform
+[   71.486435] usb 2-1.1: New USB device found, idVendor=0c72, idProduct=000c, bcdDevice=54.ff
+[   71.486540] usb 2-1.1: New USB device strings: Mfr=10, Product=4, SerialNumber=0
+[   71.486569] usb 2-1.1: Product: XCAN-USB
+[   71.486594] usb 2-1.1: Manufacturer:                         
+[   71.502042] peak_usb 2-1.1:1.0: PEAK-System PCAN-USB adapter hwrev 84 serial FFFFFFFF (1 channel)
+[   71.502856] peak_usb 2-1.1:1.0 can0: attached to PCAN-USB channel 0 (device 255)			(注意到 can0 设备)
+
+root@linaro-alip:~# 
+root@linaro-alip:~# ifconfig -a
+can0: flags=128<NOARP>  mtu 16
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 10  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+(2) 用移植好的 can-utils 测试工具来测试 can: （请自行参考网上相关教程移植can-utils）
+
+     (debian或者ubuntu可以直接用命令安装： sudo apt-get install can-utils	)
+
+     # ip link set can0 type can bitrate 500000	（设置can波特率为 500k）
+
+     # ifconfig can0 up			（启动can0）
+     # ifconfig can0 txqueuelen 1000		（配置txqueuelen的传输数据的缓冲区的存储长度）
+     # cansend can0 999#DEADBEEF  		（can0发送ID为0x999的数据0xdeadbeef）
+     # candump can0                			  (can0接收数据)
+     # ifconfig can0 down			（关闭can0）
+
+
+
+

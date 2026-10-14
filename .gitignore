@@ -1,0 +1,79 @@
+# ===== OS =====
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ===== Editor =====
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+
+# ===== STM32 CubeIDE / Makefile =====
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.list
+*.map
+*.lst
+Debug/
+Release/
+.build/
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+*.ioc~
+*.bak
+
+# ===== Qt / PC =====
+build-*/
+*.pro.user*
+*.pro.user
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+Makefile*
+*.exe
+*.obj
+*.dll
+*.a
+*.so
+*.pyc
+__pycache__/
+
+# ===== K210 =====
+*.mpy
+.kflash_settings
+flash.log
+
+# ===== Build output =====
+bin/
+obj/
+dist/
+
+# ===== Keil 构建产物 =====
+*.axf
+
+# ===== Qt 工程缓存 =====
+*.qtc_clangd
+build_verify/
+
+# ===== 备份（源码已入库，备份不入库） =====
+03_Firmware/STM32_backup_20261009/
+
+# ===== 中间工作区（最终交付物已归档 01_Docs/04_演示材料） =====
+ppt_work/
+
+# ===== 超大第三方文件（GitHub 单文件 >100MB 限制，不入库） =====
+06_Resources/corexy XY滑台资料.zip
+06_Resources/corexy XY滑台资料/步骤1.安装参考视频.zip
+06_Resources/corexy XY滑台资料/步骤1.安装参考视频/
+06_Resources/PCAN/上位机软件/TSMaster.zip
+06_Resources/PCAN/驱动/win/PEAK-System_Driver-Setup.zip
+04_Tools/调试工具/PEAK-System_Driver-Setup-v500/
